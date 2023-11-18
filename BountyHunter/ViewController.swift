@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 // UIImagePickerControllerDelegate & UINavigationControllerDelegate se requieren para la implementacion del imagePicker
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -16,6 +17,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let lblBounty = UILabel()
     let apiS = APIService()
     let imagepicker = UIImagePickerController()
+    var player:AVAudioPlayer?
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if let laURL = Bundle.main.url(forResource: "bang_3", withExtension: "mp3") {
+            do {
+                player = try AVAudioPlayer(contentsOf: laURL)
+                player?.play()
+                player?.volume = 1.0
+            } catch {
+                print ("No se puede reproducir el  audio \(error.localizedDescription)")
+            }
+        }
+    }
     
     func createView() {
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +88,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         boton3.trailingAnchor.constraint(equalTo:self.view.trailingAnchor).isActive = true
         boton3.topAnchor.constraint(equalTo:lblBounty.bottomAnchor, constant: 15).isActive = true
         // le asignamos un action para cuando el usuario lo toque
-        boton3.addTarget(self, action:#selector(botonTouch), for:.touchUpInside)
+        boton3.addTarget(self, action:#selector(botonCapturado), for:.touchUpInside)
+    }
+    
+    @objc func botonCapturado(){
+        let ac = UIAlertController(title: "CONFIRME", message:"Acaba de capturar a \(fugitive!.name)?", preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "SI", style: .default) {
+            alertaction in
+            // 1. TODO: Obtener coordenadas del usuario
+            
+            // 2. Enviar coordenadas y ID del fugitivo al backend
+            
+            // 3. Presumir en redes sociales!
+            let items = ["Acabo de capturar a \(self.fugitive!.name)!!",
+                         UIImage(named: "capturado") as Any]
+            let avc = UIActivityViewController(activityItems:items, applicationActivities:nil)
+            self.present(avc, animated: true)
+        }
+        let action2 = UIAlertAction(title: "NO", style: .cancel)
+        ac.addAction(action1)
+        ac.addAction(action2)
+        self.present(ac, animated: true)
     }
     
     func fillInfo() {
