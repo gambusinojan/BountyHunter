@@ -9,14 +9,55 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     var elMapa = MKMapView()
     var fugitive: Fugitive?
     var header = UITextView()
     var elBoton: UIButton!
+    var locationManager: CLLocationManager!
     
     @objc func directions() {
-        print ("hey")
+        // 1. para obtener indicaciones, necesitamos el punto de origen
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locationManager.stopUpdatingLocation()
+        // 2. ya obtuvimos el punto origen, y ya tenemos el punto destino, entonces podemos pedir las indicaciones
+        guard let loc = locations.first else { return }
+        let indicaciones = MKDirections.Request()
+        indicaciones.source = MKMapItem(placemark:MKPlacemark(coordinate:elMapa.centerCoordinate))
+        indicaciones.destination = MKMapItem(placemark:MKPlacemark(coordinate:loc.coordinate))
+        indicaciones.transportType = .any
+        indicaciones.requestsAlternateRoutes = false
+        let rutas = MKDirections(request: indicaciones)
+        rutas.calculate { response, error in
+            if error != nil {
+                print ("NO se obtuvieron rutas \(String(describing:error))")
+            }
+            else {
+                // El arreglo trae todas las rutas que se obtuvieron
+                guard let lasRutas = response?.routes else { return }
+                //si queremos dibujar solo una...
+                guard let laRuta = lasRutas.first else { return }
+                self.elMapa.addOverlay(laRuta.polyline)
+                self.elMapa.setVisibleMapRect(laRuta.polyline.boundingMapRect, animated:false)
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager.stopUpdatingLocation()
+        let ac = UIAlertController(title: "Error", message:"No se puede obtener su ubicación", preferredStyle: .alert)
+        let action = UIAlertAction(title: "ok", style: .default) {
+            alertaction in
+            // Este codigo se ejecutará cuando el usuario toque el botón
+        }
+        ac.addAction(action)
+        self.present(ac, animated: true)
     }
     
     override func viewDidLoad() {
@@ -38,6 +79,8 @@ class MapViewController: UIViewController {
         elBoton.topAnchor.constraint(equalTo:elMapa.bottomAnchor, constant: 20).isActive = true
         elBoton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         elBoton.addTarget(self, action:#selector(directions), for:.touchUpInside)
+        
+        elMapa.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,14 +116,14 @@ class MapViewController: UIViewController {
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        // se tiene que implementar para poder mostrar lineas y poligonos
+        var lineaParaDibujar = MKPolylineRenderer()
+        if let linea = overlay as? MKPolyline {
+            lineaParaDibujar = MKPolylineRenderer(polyline: linea)
+            lineaParaDibujar.strokeColor = UIColor.blue
+            lineaParaDibujar.lineWidth = 2.0
+        }
+        return lineaParaDibujar
     }
-    */
-
 }
