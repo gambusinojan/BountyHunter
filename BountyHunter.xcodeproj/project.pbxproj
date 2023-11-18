@@ -20,6 +20,7 @@
 		3D207FBA2B0846DD0062394D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D207FB92B0846DD0062394D /* MapKit.framework */; };
 		3D207FBC2B0846E60062394D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D207FBB2B0846E60062394D /* CoreLocation.framework */; };
 		3D207FBE2B0849F50062394D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D207FBD2B0849F50062394D /* MapViewController.swift */; };
+		3D207FC02B08536D0062394D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D207FBF2B08536C0062394D /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3D207FB92B0846DD0062394D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D207FBB2B0846E60062394D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D207FBD2B0849F50062394D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3D207FBF2B08536C0062394D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				3D0D8C872AFFEB2E0082D0C0 /* Model.swift */,
 				3D0D8C892AFFF9DF0082D0C0 /* FugitivesTableViewController.swift */,
 				3D207FBD2B0849F50062394D /* MapViewController.swift */,
+				3D207FBF2B08536C0062394D /* Utils.swift */,
 			);
 			path = BountyHunter;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 			files = (
 				3D0D8C742AFFE99B0082D0C0 /* ViewController.swift in Sources */,
 				3D0D8C862AFFEA5D0082D0C0 /* APIService.swift in Sources */,
+				3D207FC02B08536D0062394D /* Utils.swift in Sources */,
 				3D0D8C8A2AFFF9DF0082D0C0 /* FugitivesTableViewController.swift in Sources */,
 				3D0D8C842AFFEA230082D0C0 /* InternetMonitor.swift in Sources */,
 				3D0D8C882AFFEB2F0082D0C0 /* Model.swift in Sources */,

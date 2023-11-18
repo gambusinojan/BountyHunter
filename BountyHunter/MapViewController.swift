@@ -13,6 +13,11 @@ class MapViewController: UIViewController {
     var elMapa = MKMapView()
     var fugitive: Fugitive?
     var header = UITextView()
+    var elBoton: UIButton!
+    
+    @objc func directions() {
+        print ("hey")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +29,22 @@ class MapViewController: UIViewController {
         header.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
         header.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80).isActive = true
         header.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        elBoton = Utils.createButton("como llegar", color:.green)
+        self.view.addSubview(elBoton)
+        elBoton.translatesAutoresizingMaskIntoConstraints = false
+        elBoton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40).isActive = true
+        elBoton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40).isActive = true
+        elBoton.topAnchor.constraint(equalTo:elMapa.bottomAnchor, constant: 20).isActive = true
+        elBoton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        elBoton.addTarget(self, action:#selector(directions), for:.touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if fugitive != nil {
             let centro = CLLocationCoordinate2D(latitude:fugitive!.lastSeenLat, longitude:fugitive!.lastSeenLon)
-            elMapa.setRegion(MKCoordinateRegion(center:centro, latitudinalMeters:500, longitudinalMeters:500), animated: true)
+            elMapa.setRegion(MKCoordinateRegion(center:centro, latitudinalMeters:5000, longitudinalMeters:5000), animated: true)
             let elPin = MKPointAnnotation()
             elPin.coordinate = centro
             elPin.title = "El fugitivo está aqui"

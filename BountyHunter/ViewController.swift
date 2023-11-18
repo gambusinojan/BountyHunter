@@ -17,14 +17,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let apiS = APIService()
     let imagepicker = UIImagePickerController()
     
-    func createButton (_ title:String, color:UIColor) -> UIButton {
-        let boton = UIButton(type: .custom)
-        boton.backgroundColor = color
-        boton.setTitle(title, for:.normal)
-        boton.layer.cornerRadius = 7.5
-        return boton
-    }
-    
     func createView() {
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.image = UIImage(named: "life")
@@ -33,7 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         iv.heightAnchor.constraint(equalToConstant: 200).isActive = true
         iv.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant:25).isActive = true
         iv.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant:-25).isActive = true
-        let boton1 = createButton("actualizar foto", color: .lightGray.withAlphaComponent(0.5))
+        let boton1 = Utils.createButton("actualizar foto", color: .lightGray.withAlphaComponent(0.5))
         self.view.addSubview(boton1)
         // configuramos sus constraints
         boton1.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         lblBounty.heightAnchor.constraint(equalToConstant:30).isActive = true
         lblBounty.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant:25).isActive = true
         lblBounty.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant:-25).isActive = true
-        let boton2 = createButton("localizar", color:.orange)
+        let boton2 = Utils.createButton("localizar", color:.orange)
         self.view.addSubview(boton2)
         // configuramos sus constraints
         boton2.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +65,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         boton2.topAnchor.constraint(equalTo:lblBounty.bottomAnchor, constant: 15).isActive = true
         // le asignamos un action para cuando el usuario lo toque
         boton2.addTarget(self, action:#selector(botonLocalizarTouch), for:.touchUpInside)
-        let boton3 = createButton("capturar", color:.purple)
+        let boton3 = Utils.createButton("capturar", color:.purple)
         self.view.addSubview(boton3)
         // configuramos sus constraints
         boton3.translatesAutoresizingMaskIntoConstraints = false
