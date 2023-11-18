@@ -72,7 +72,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         boton2.leadingAnchor.constraint(equalTo:self.view.leadingAnchor).isActive = true
         boton2.topAnchor.constraint(equalTo:lblBounty.bottomAnchor, constant: 15).isActive = true
         // le asignamos un action para cuando el usuario lo toque
-        boton2.addTarget(self, action:#selector(botonTouch), for:.touchUpInside)
+        boton2.addTarget(self, action:#selector(botonLocalizarTouch), for:.touchUpInside)
         let boton3 = createButton("capturar", color:.purple)
         self.view.addSubview(boton3)
         // configuramos sus constraints
@@ -93,6 +93,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             // descargar la foto de <URL>/pics/<FUGITIVE_ID>.jpg
             apiS.getPhoto(fID: fugitive!.fugitiveid) { data in
                 if let d = data {
+                    self.apiS.savePhoto(d, ofFugitive:self.fugitive!.fugitiveid)
                     DispatchQueue.main.async {
                         let photo = UIImage(data:d)
                         self.iv.image = photo
@@ -117,8 +118,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @objc func botonTouch() {
         // si se permite la edición....
         imagepicker.allowsEditing = true
-        imagepicker.sourceType = .photoLibrary
+        // imagepicker.sourceType = .photoLibrary
+        imagepicker.sourceType = .camera
         self.present(imagepicker, animated: true)
+    }
+    
+    @objc func botonLocalizarTouch() {
+        // 1. si usamos storyboard, y conectamos los controllers con un segue
+        self.performSegue(withIdentifier: "localizar", sender:nil)
+        
+        // 2. si usamos storyboard pero no usamos segues, sino que tenemos un identificador para el viewController:
+        // hacemos una referencia al Storyboard
+        //let sb = UIStoryboard(name: "Main", bundle:nil)
+        //let newVC = sb.instantiateViewController(withIdentifier: "localizarVC")
+        //self.navigationController?.pushViewController(newVC, animated: true)
+        
+        // 3. si no usamos storyboard:
+        /*  let newVC = ElOtroViewController()
+            self.present (newVC)  */
     }
     
     // cuando el usuario elige una foto, la colocamos en lugar de la actual
@@ -128,6 +145,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // si no se permitió la edición, la imagen está en la llave
         // if let imagen = info[.originalImage] as? UIImage {
             self.iv.image = imagen
+            // para guardar la foto a la galería -- LAS FOTOS TOMADAS EN UN APP NO SE GUARDAN AUTOMATICAMENTE
+            UIImageWriteToSavedPhotosAlbum(imagen, nil, nil, nil)
+            apiS.uploadPhoto(photo: imagen, id_fugitive: self.fugitive!.fugitiveid) { dictionary in
+                print (dictionary)
+            }
         }
         imagepicker.dismiss(animated: true)
     }
@@ -136,5 +158,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagepicker.dismiss(animated: true)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! MapViewController
+        destinationVC.fugitive = self.fugitive
+    }
 }
 

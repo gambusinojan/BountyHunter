@@ -15,6 +15,10 @@ struct Fugitive: Codable {
     let name: String
     let age: Int
     let desc: String
+    let lastSeenLat : Double
+    let lastSeenLon : Double
+    let capturedLat : Double
+    let capturedLon : Double
 
     enum CodingKeys: String, CodingKey {
         case gender = "GENDER"
@@ -23,6 +27,10 @@ struct Fugitive: Codable {
         case name = "NAME"
         case age = "AGE"
         case desc = "DESC"
+        case lastSeenLat = "LAST_SEEN_LAT"
+        case lastSeenLon = "LAST_SEEN_LON"
+        case capturedLat = "CAPTURED_LAT"
+        case capturedLon = "CAPTURED_LON"
     }
 }
 
