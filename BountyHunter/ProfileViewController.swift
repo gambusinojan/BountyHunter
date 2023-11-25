@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import GoogleSignIn
 
 class ProfileViewController: UIViewController {
     
@@ -40,10 +41,16 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func logout () {
-        // Borrar la llave del user id
-        UserDefaults.standard.removeObject(forKey: "UID")
-        UserDefaults.standard.synchronize()
-        // cambiar el controller actual, a login
+        if let _ = UserDefaults.standard.object(forKey: "UID") {
+            // Borrar la llave del user id
+            UserDefaults.standard.removeObject(forKey: "UID")
+            UserDefaults.standard.synchronize()
+            // cambiar el controller actual, a login
+        }
+        else {
+            // login con google o apple
+            GIDSignIn.sharedInstance.signOut()
+        }
         self.performSegue(withIdentifier: "logOut", sender: nil)
     }
 }
