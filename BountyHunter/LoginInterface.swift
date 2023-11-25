@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import AuthenticationServices
 
-class LoginInterface: UIViewController {
+class LoginInterface: UIViewController, ASAuthorizationControllerDelegate {
     
     let actInd = UIActivityIndicatorView()
     
@@ -34,14 +35,44 @@ class LoginInterface: UIViewController {
         else {
             let loginVC = CustomLoginViewController()
             self.addChild(loginVC)
-            loginVC.view.frame = self.view.bounds
+            self.view.backgroundColor = .red.withAlphaComponent(0.4)
+            loginVC.view.frame = CGRect(x: 0, y: 40, width:self.view.bounds.width, height:self.view.bounds.width)
             self.view.addSubview(loginVC.view)
             actInd.style = .large
             actInd.tintColor = .red
             actInd.hidesWhenStopped = true
             actInd.center = self.view.center
             self.view.addSubview(actInd)
+            // agregamos el boton de appleID
+            let appleIDBtn = ASAuthorizationAppleIDButton()
+            self.view.addSubview(appleIDBtn)
+            appleIDBtn.frame.origin.y = loginVC.view.frame.maxY + 20
+            appleIDBtn.center.x = self.view.center.x
+            appleIDBtn.addTarget(self, action:#selector(appleIDBtnTouch), for:.touchUpInside)
         }
+    }
+    
+    @objc func appleIDBtnTouch(){
+        let provider = ASAuthorizationAppleIDProvider()
+        let request = provider.createRequest()
+        request.requestedScopes = [.email, .fullName]
+        let authController = ASAuthorizationController(authorizationRequests: [request])
+        authController.delegate = self
+        authController.performRequests()
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credentials = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userID = credentials.user
+            let name = credentials.fullName
+            let mail = credentials.email
+            // todo OK TODO: registrar al usuario en mi backend
+            // y avanzar a home
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print (error.localizedDescription)
     }
     
     func customLogin (mail:String, password:String) {

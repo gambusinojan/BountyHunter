@@ -36,6 +36,15 @@ class ProfileViewController: UIViewController {
         avpp.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         avpp.view.heightAnchor.constraint(equalToConstant:320).isActive = true
         self.addChild(avpp)
+        btnPlay.addTarget(self, action:#selector(logout), for:.touchUpInside)
+    }
+    
+    @objc func logout () {
+        // Borrar la llave del user id
+        UserDefaults.standard.removeObject(forKey: "UID")
+        UserDefaults.standard.synchronize()
+        // cambiar el controller actual, a login
+        self.performSegue(withIdentifier: "logOut", sender: nil)
     }
 }
         

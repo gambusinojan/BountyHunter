@@ -143,6 +143,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="QD3-8U-5pg"/>
+                    <connections>
+                        <segue destination="Ks5-JF-FD9" kind="presentation" identifier="logOut" modalPresentationStyle="fullScreen" id="6Ya-0V-j34"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X24-pO-f2P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
