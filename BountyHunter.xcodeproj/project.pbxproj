@@ -23,6 +23,7 @@
 		3D207FC02B08536D0062394D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D207FBF2B08536C0062394D /* Utils.swift */; };
 		3D448D6F2B1191CF00AAA537 /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D448D6E2B1191CF00AAA537 /* CustomLoginViewController.swift */; };
 		3D448D712B1192CD00AAA537 /* LoginInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D448D702B1192CC00AAA537 /* LoginInterface.swift */; };
+		3D5F342A2B124825000CB8B9 /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5F34292B124825000CB8B9 /* CryptoKit.framework */; };
 		3D9E572E2B09228200F4B5A8 /* AVPlayerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E572D2B09228200F4B5A8 /* AVPlayerPlayer.swift */; };
 		3D9E57302B09230500F4B5A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E572F2B09230500F4B5A8 /* ProfileViewController.swift */; };
 		3D9E57322B09318A00F4B5A8 /* bang_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D9E57312B09318A00F4B5A8 /* bang_3.mp3 */; };
@@ -47,6 +48,7 @@
 		3D207FBF2B08536C0062394D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		3D448D6E2B1191CF00AAA537 /* CustomLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
 		3D448D702B1192CC00AAA537 /* LoginInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterface.swift; sourceTree = "<group>"; };
+		3D5F34292B124825000CB8B9 /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
 		3D9E572D2B09228200F4B5A8 /* AVPlayerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerPlayer.swift; sourceTree = "<group>"; };
 		3D9E572F2B09230500F4B5A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D9E57312B09318A00F4B5A8 /* bang_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bang_3.mp3; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			files = (
 				3D207FBC2B0846E60062394D /* CoreLocation.framework in Frameworks */,
 				3D207FBA2B0846DD0062394D /* MapKit.framework in Frameworks */,
+				3D5F342A2B124825000CB8B9 /* CryptoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +113,7 @@
 		3D207FB82B0846DD0062394D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D5F34292B124825000CB8B9 /* CryptoKit.framework */,
 				3D207FBB2B0846E60062394D /* CoreLocation.framework */,
 				3D207FB92B0846DD0062394D /* MapKit.framework */,
 			);

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CryptoKit
 
 public let colorPrimaryDark:UInt = 0x0005C5
 public let colorAccent:UInt = 0xDFEFFF
@@ -36,11 +37,25 @@ class Utils {
          ac.addAction(aa)
          for w in UIApplication.shared.windows {
              if w.isKeyWindow {
-                 w.rootViewController?.present(ac, animated: true)
+                 DispatchQueue.main.async {
+                     w.rootViewController?.present(ac, animated: true)
+                 }
                  break;
              }
          }
      }
+    
+    class func encryptPassword(password: String) -> String {
+        let salt = ""
+        let saltedPassword = password + salt
+
+        guard let saltedPasswordData = saltedPassword.data(using: .utf8) else {
+            return ""
+        }
+        let hashedPassword = SHA256.hash(data: saltedPasswordData)
+        let hashedPasswordString = hashedPassword.compactMap { String(format: "%02x", $0) }.joined()
+        return hashedPasswordString
+    }
 }
 
 extension UITextField {

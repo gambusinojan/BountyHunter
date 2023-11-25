@@ -3,4 +3,102 @@
    uuid = "BF82A303-9063-44CE-9802-28007A2D63CC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD383AD0-737A-4B00-9EE8-23FD84B7B1D2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BountyHunter/LoginInterface.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "customLogin(mail:password:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "BD383AD0-737A-4B00-9EE8-23FD84B7B1D2 - 8ed108dd53e2eed9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in BountyHunter.LoginInterface.customLogin(mail: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "BountyHunter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jan/Documents/DDADM/10a%20Gen/MODULO-IOS-AVANZADO/Code/BountyHunter/BountyHunter/LoginInterface.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "1416">
+               </Location>
+               <Location
+                  uuid = "BD383AD0-737A-4B00-9EE8-23FD84B7B1D2 - 8ed108dd53e2eeba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in BountyHunter.LoginInterface.customLogin(mail: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "BountyHunter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jan/Documents/DDADM/10a%20Gen/MODULO-IOS-AVANZADO/Code/BountyHunter/BountyHunter/LoginInterface.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "652">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D8D1590-BA67-4EE1-BAAB-61D0D02F6917"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BountyHunter/LoginInterface.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "customLogin(mail:password:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "9D8D1590-BA67-4EE1-BAAB-61D0D02F6917 - abdd2b95e886f570"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in BountyHunter.LoginInterface.customLogin(mail: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "BountyHunter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jan/Documents/DDADM/10a%20Gen/MODULO-IOS-AVANZADO/Code/BountyHunter/BountyHunter/LoginInterface.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "9D8D1590-BA67-4EE1-BAAB-61D0D02F6917 - 8ed108dd53e2ed7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;) -&gt; () in BountyHunter.LoginInterface.customLogin(mail: Swift.String, password: Swift.String) -&gt; ()"
+                  moduleName = "BountyHunter"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jan/Documents/DDADM/10a%20Gen/MODULO-IOS-AVANZADO/Code/BountyHunter/BountyHunter/LoginInterface.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1416">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

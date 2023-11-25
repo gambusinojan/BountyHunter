@@ -24,13 +24,14 @@ struct Media {
    }
 }
 struct APIService {
+    
     func loginService(user:String, password:String, completionHandler: @escaping (Dictionary<String,Any>?) -> Void ) {
             let url = "http://janzelaznog.com/DDAM/iOS/WS/login.php"
             var request = URLRequest(url: URL(string:url)!)
             let token = UIDevice.current.identifierForVendor?.uuidString
             let params = [
                     "username" : user,
-                    "password" : password,
+                    "password" : Utils.encryptPassword(password:password),
                     "token": token,
                     "type" : "iOS"
             ]
@@ -50,10 +51,15 @@ struct APIService {
                     }
                     catch {
                         print(error.localizedDescription)
+                        completionHandler(nil)
                     }
+                }
+                else {
+                    completionHandler(nil)
                 }
                 if (error != nil){
                     print("Error %@",error!)
+                    completionHandler(nil)
                 }
             }
             dataTask.resume()

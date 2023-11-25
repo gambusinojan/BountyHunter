@@ -83,7 +83,7 @@
                     <tabBarItem key="tabBarItem" title="Fugitives" id="9pe-b5-0W1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gs-Gn-YyW">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -105,6 +105,9 @@
                         <viewLayoutGuide key="safeArea" id="gIv-3w-xvT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <segue destination="x1y-iG-Nyd" kind="presentation" identifier="loginOK" modalPresentationStyle="fullScreen" id="NjU-T2-WKs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHD-qa-Dfz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,7 +116,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="taq-CD-dhW">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="x1y-iG-Nyd" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="x1y-iG-Nyd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jZx-hp-PfE">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
