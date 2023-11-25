@@ -21,6 +21,8 @@
 		3D207FBC2B0846E60062394D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D207FBB2B0846E60062394D /* CoreLocation.framework */; };
 		3D207FBE2B0849F50062394D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D207FBD2B0849F50062394D /* MapViewController.swift */; };
 		3D207FC02B08536D0062394D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D207FBF2B08536C0062394D /* Utils.swift */; };
+		3D448D6F2B1191CF00AAA537 /* CustomLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D448D6E2B1191CF00AAA537 /* CustomLoginViewController.swift */; };
+		3D448D712B1192CD00AAA537 /* LoginInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D448D702B1192CC00AAA537 /* LoginInterface.swift */; };
 		3D9E572E2B09228200F4B5A8 /* AVPlayerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E572D2B09228200F4B5A8 /* AVPlayerPlayer.swift */; };
 		3D9E57302B09230500F4B5A8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E572F2B09230500F4B5A8 /* ProfileViewController.swift */; };
 		3D9E57322B09318A00F4B5A8 /* bang_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D9E57312B09318A00F4B5A8 /* bang_3.mp3 */; };
@@ -43,6 +45,8 @@
 		3D207FBB2B0846E60062394D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D207FBD2B0849F50062394D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		3D207FBF2B08536C0062394D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		3D448D6E2B1191CF00AAA537 /* CustomLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginViewController.swift; sourceTree = "<group>"; };
+		3D448D702B1192CC00AAA537 /* LoginInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInterface.swift; sourceTree = "<group>"; };
 		3D9E572D2B09228200F4B5A8 /* AVPlayerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerPlayer.swift; sourceTree = "<group>"; };
 		3D9E572F2B09230500F4B5A8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D9E57312B09318A00F4B5A8 /* bang_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bang_3.mp3; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		3D0D8C6E2AFFE99B0082D0C0 /* BountyHunter */ = {
 			isa = PBXGroup;
 			children = (
+				3D448D6E2B1191CF00AAA537 /* CustomLoginViewController.swift */,
 				3D9E57312B09318A00F4B5A8 /* bang_3.mp3 */,
 				3D9E572D2B09228200F4B5A8 /* AVPlayerPlayer.swift */,
 				3D0D8C852AFFEA5D0082D0C0 /* APIService.swift */,
@@ -97,6 +102,7 @@
 				3D207FBD2B0849F50062394D /* MapViewController.swift */,
 				3D207FBF2B08536C0062394D /* Utils.swift */,
 				3D9E572F2B09230500F4B5A8 /* ProfileViewController.swift */,
+				3D448D702B1192CC00AAA537 /* LoginInterface.swift */,
 			);
 			path = BountyHunter;
 			sourceTree = "<group>";
@@ -191,7 +197,9 @@
 				3D9E57302B09230500F4B5A8 /* ProfileViewController.swift in Sources */,
 				3D0D8C702AFFE99B0082D0C0 /* AppDelegate.swift in Sources */,
 				3D0D8C722AFFE99B0082D0C0 /* SceneDelegate.swift in Sources */,
+				3D448D6F2B1191CF00AAA537 /* CustomLoginViewController.swift in Sources */,
 				3D9E572E2B09228200F4B5A8 /* AVPlayerPlayer.swift in Sources */,
+				3D448D712B1192CD00AAA537 /* LoginInterface.swift in Sources */,
 				3D207FBE2B0849F50062394D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +350,8 @@
 				DEVELOPMENT_TEAM = E9KS5E39JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BountyHunter/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Se requiere la cámara";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Para elegir una foto";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -370,6 +380,8 @@
 				DEVELOPMENT_TEAM = E9KS5E39JS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BountyHunter/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Se requiere la cámara";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Para elegir una foto";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

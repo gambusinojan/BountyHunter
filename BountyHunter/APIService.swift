@@ -24,6 +24,52 @@ struct Media {
    }
 }
 struct APIService {
+    func loginService(user:String, password:String, completionHandler: @escaping (Dictionary<String,Any>?) -> Void ) {
+            let url = "http://janzelaznog.com/DDAM/iOS/WS/login.php"
+            var request = URLRequest(url: URL(string:url)!)
+            let token = UIDevice.current.identifierForVendor?.uuidString
+            let params = [
+                    "username" : user,
+                    "password" : password,
+                    "token": token,
+                    "type" : "iOS"
+            ]
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            let postString = self.getPostString(params: params as [String : Any])
+            request.httpBody = postString.data(using: .utf8)
+            
+            let defaultSession = URLSession(configuration: URLSessionConfiguration.ephemeral)
+            let dataTask = defaultSession.dataTask(with: request) { (data:Data?, urlResponse:URLResponse?, error:Error?) in
+                let httpResponse = urlResponse as? HTTPURLResponse
+                let statusCode = httpResponse?.statusCode ?? 0
+                if (statusCode == 200) {
+                    do {
+                        let dictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! Dictionary<String, Any>
+                        completionHandler(dictionary)
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                if (error != nil){
+                    print("Error %@",error!)
+                }
+            }
+            dataTask.resume()
+        }
+        
+        func getPostString(params:[String:Any]) -> String {
+            var data = [String]()
+            for(key, optValue) in params {
+                if let value = optValue as? String {
+                    data.append(key + "=\(value)")
+                }
+            }
+            return data.map { String($0) }.joined(separator: "&")
+        }
+    
+    
     func getTodos(completionHandler: @escaping (Fugitives?) -> Void) {
         if let url = URL(string:"\(BASE_URL)/fugitives.json") {
             let request = URLRequest(url: url)
